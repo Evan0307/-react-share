@@ -1,2 +1,2 @@
-# -react-share
+# react-share
 performance optimization of react
