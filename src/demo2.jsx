@@ -14,7 +14,6 @@ import  Immutable from 'immutable'
 
     class Child1Demo2 extends Component{
 
-
      state={
          someData:{name:'apple'},
          otherData:Date.now(),
@@ -57,32 +56,24 @@ import  Immutable from 'immutable'
 
 
   class Child2Demo2 extends Component{
-
-       state = {
+    state = {
            someData: Immutable.fromJS({  name:"Apple"})
         }
     
-        shouldComponentUpdate(nextProps,nextState){
-
+      shouldComponentUpdate(nextProps,nextState){
           if(!Immutable.is(nextState.someData,this.state.someData)){  return true }
            return false ;
+         }
 
-    }
-
-
-            handleClick=()=>{
-               // const someData= this.state.someData.set('name','apple2')
-                const someData= this.state.someData.set('name','Apple')
-                this.setState({
+   handleClick=()=>{
+       // const someData= this.state.someData.set('name','apple2')
+        const someData= this.state.someData.set('name','Apple')
+         this.setState({
                     someData,
                 })
-
             }
-    
-    
             render(){
                console.log('child2Demo2  渲染了')
-    
                  return(
                      <Fragment>
                         <button onClick={this.handleClick} > child2Demo2 </button> 
@@ -97,18 +88,14 @@ import  Immutable from 'immutable'
         name:'classDemo2'
     }
 
-   
-
-
   render(){
     const {name} = this.state;
- return ( <>
+    return ( <>
       <h1>{name}</h1> 
       
 
       {/* <Child1Demo2 /> */}
        <Child2Demo2/>
-
 
    {/* <A data="{data}">
        B 组件只使用了 data.a 和 data.b 

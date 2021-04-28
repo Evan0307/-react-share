@@ -1,53 +1,27 @@
-import { useState, useEffect } from "react";
-import VisibilityObserver, {
-  useVisibilityObserver
-} from "react-visibility-observer";
+import React from 'react';
+import { FixedSizeList as List } from 'react-window';
 
-const VisibilityObserverChildren = ({ callback, children }) => {
-  const { isVisible } = useVisibilityObserver();
-  useEffect(() => {
-    callback(isVisible);
-  }, [callback, isVisible]);
-
-  return <>{children}</>;
-};
-
-const LazyRender = () => {
-  const [isRendered, setIsRendered] = useState(false);
-  
-    console.log(isRendered)
-  if (!isRendered) {
-    return (
-      <VisibilityObserver rootMargin={"0px 0px 0px 0px"}>
-        <VisibilityObserverChildren
-          callback={(isVisible) => {
-            if (isVisible) {
-              setIsRendered(true);
-            }
-          }}
-        >
-          <span />
-        </VisibilityObserverChildren>
-      </VisibilityObserver>
-    );
-  }
-
-  console.log("滚动到可视区域才渲染");
-  return <div>我是 LazyRender 组件</div>;
-};
+  /* 使用 react-window 很简单，只需要计算每项的高度即可。下面代码中每一项的高度是 35px。
+        如果每项的高度是变化的，可给 itemSize 参数传一个函数 
+         用于一次性渲染大量的数据
+  */
 
 
+const Row = ({ index, style }) => (
+  <div className={index % 2 ? 'ListItemOdd' : 'ListItemEven'} style={style}>
+    Row {index}
+  </div>
+);
 
-
-export default function App() {
-    return (
-      <div className="App">
-        <h1>通过 react-visibility-observer 实现懒渲染</h1>
-        <div>注意当前 Console 中没有消息。当下拉到底部，Console 出现消息。</div>
-        <div style={{ height: 2000, background: "mediumaquamarine" }}></div>
-        <LazyRender />
-      </div>
-    );
-  }
-
-
+const Example = () => (
+  <List
+    className="List"
+    height={150}
+    itemCount={10000}
+    itemSize={35}
+    width={300}
+  >
+    {Row}
+  </List>
+);
+export default   Example;

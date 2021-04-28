@@ -1,4 +1,4 @@
-import { useState, useEffect, createContext, useContext, memo } from "react";
+import { useState, useEffect, createContext,  memo } from "react";
 
 const renderCntMap = {};
 const renderOnce = (name) => {
@@ -22,7 +22,7 @@ const CtxContainer = ({ children }) => {
 };
 
 function CompA() {
-  const cnt = useContext(ValueCtx);
+
   // 组件内使用 cnt
   return (
     <div>
@@ -45,7 +45,6 @@ const CompB = memo(function CompB() {
 
 const CompD = memo(function () {
   // 组件D使用 cnt
-  const cnt = useContext(ValueCtx);
   return <div>组件 CompD Render 次数：{renderOnce("CompD")}</div>;
 });
 

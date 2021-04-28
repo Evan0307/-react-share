@@ -61,7 +61,7 @@ export default function BasicExample() {
             <Link to="/classDemo9">demo9  useMemo 返回虚拟 DOM 可跳过该组件 Render 过程</Link>
           </li>
           <li>
-            <Link to="/classDemo10">Demo10 懒渲染优化</Link>
+            <Link to="/classDemo10">Demo10 长列表</Link>
           </li>
         </ul>
 

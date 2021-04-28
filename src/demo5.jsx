@@ -1,6 +1,5 @@
 
  import React ,{ Component, useState }  from 'react';
- import ReactDOM from 'react-dom';
    // 批量更新，减少 Render 次数
 
    // React 类组件中 setState 是同步的还是异步的？

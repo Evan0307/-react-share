@@ -1,31 +1,39 @@
 
-
-
 import React from "react";
+import  {v4 as uuidv4} from 'uuid';
 
 
 //列表项使用 key 属性 
 
+const size=10000;
+const arr1 = Array.from(Array(size),(k,index)=>({label:1+index,}));
+
+const arr2 =  Array.from(Array(size),(k,index)=>({label:1+index,key:uuidv4(),})); 
+
 function ParentDemo4() {
 
- 
 
+   console.log(arr1);
+   console.log(arr2);
 
  return (
      <>
       {/* diff  过程  出现先后顺序，两次更新，一次创建 */}
-{/* <!-- 前一次 Render 结果 --> */}
-<ul>
-  <li>Duke</li>
-  <li>Villanova</li>                           
-</ul>
+      
+     <h2>  列表未添加 key: </h2>
+      <ul>
+        {arr1.map(i=><li>{i.label}</li>)}
+     </ul>
 
-{/* <!-- 新的 Render 结果 --> */}
-<ul>
-  <li>Connecticut</li>
-  <li>Duke</li>
-  <li>Villanova</li>
-</ul>
+
+     <h2> 列表添加 key: </h2>
+     <ul>
+       {arr2.map(i=><li key={i.key}>{i.label}</li>)}
+     </ul>
+
+
+     
+
 
 
 
